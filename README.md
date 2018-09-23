@@ -25,7 +25,7 @@ MongoDB JSON is extended to support all BSON data types.
 https://docs.mongodb.com/v3.6/reference/configuration-options/
 
 Lab - Launching MongoDB
-
+```
 $ mongod --port 27000 --dbpath /data/db --bind_ip 192.168.103.100,localhost --auth --smallfiles --logpath logs/mongod.log --fork
 
 mongo admin --host localhost:27000 --eval '
@@ -65,3 +65,4 @@ MongoDB Enterprise > db.getUsers()
 		]
 	}
 ]
+```
