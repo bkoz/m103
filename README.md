@@ -38,4 +38,30 @@ mongo admin --host localhost:27000 --eval '
   })
 '
 
-$ mongo --port 27000 --authenticationDatabase admin -u m103-admin -p m103-pass
+$ mongo localhost:27000/admin -u m103-admin -p m103-pass
+MongoDB shell version v3.6.8
+connecting to: mongodb://localhost:27000/admin
+MongoDB server version: 3.6.8
+Server has startup warnings: 
+2018-09-23T19:59:54.199+0000 I STORAGE  [initandlisten] 
+2018-09-23T19:59:54.199+0000 I STORAGE  [initandlisten] ** WARNING: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine
+2018-09-23T19:59:54.199+0000 I STORAGE  [initandlisten] **          See http://dochub.mongodb.org/core/prodnotes-filesystem
+MongoDB Enterprise > show dbs
+admin   0.000GB
+config  0.000GB
+local   0.000GB
+
+MongoDB Enterprise > db.getUsers()
+[
+	{
+		"_id" : "admin.m103-admin",
+		"user" : "m103-admin",
+		"db" : "admin",
+		"roles" : [
+			{
+				"role" : "root",
+				"db" : "admin"
+			}
+		]
+	}
+]
