@@ -6,13 +6,15 @@
 
 ### Chapter 1
 
+```
 db.createUser()
 db.dropUser()
 db.createCollection()
 db.runCommand()
 db.newCollection("collection")
-
+```
 #### Indexes
+
 Improve query performance at the expense of memory and must be updated.
 The index for _Id field is always created but others must be created manually.
 
