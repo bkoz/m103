@@ -68,3 +68,33 @@ MongoDB Enterprise > db.getUsers()
 	}
 ]
 ```
+Lab - Configuration File
+
+Example
+```
+$ mongod --port 27000 --dbpath /data/db --bind_ip 192.168.103.100,localhost --auth --smallfiles --logpath logs/mongod.log --fork
+
+net:
+  port: 27000
+  bindIp: "192.168.103.100,localhost"
+systemLog:
+  path: logs/mongod.log
+processManagement:
+  fork: True
+security:
+  authorization: enabled
+storage:
+  dbPath: /data/db
+```
+Lab Assignment
+```
+$ mongod --port 27000 --dbpath /data/db --bind_ip 192.168.103.100,localhost --auth 
+```
+net:
+  port: 27000
+  bindIp: "192.168.103.100,localhost"
+security:
+  authorization: enabled
+storage:
+  dbPath: /data/db
+```
