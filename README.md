@@ -123,3 +123,88 @@ operationProfiling:
 $ mongo localhost:27000/admin -u m103-admin -p m103-pass
 ```
 
+Security
+
+Authentication: Who are you? 
+Authorization: What can you do?
+
+4 client auth methods:
+  - scram (default) basic password security
+  - x509 cert
+  - ldap
+  - kerberos
+
+cluster to cluster 
+
+RBAC
+  - each user has 1 or more roles
+  - each role has 1 or more privs
+Users are associated with a DB.
+Localhost exception
+Create a super user first, then auth as that user.
+
+use admin
+db.createUser{user: root, pwd: root, roles: {root}}
+See lecture notes.
+```
+use admin
+db.createUser({
+  user: "root",
+  pwd: "root123",
+  roles : [ "root" ]
+})
+
+mongo --username root --password root123 --authenticationDatabase admin
+
+db.stats()
+```
+Built-in roles
+Set of privs (actions over a resource)
+Network restrictions.
+
+Roles
+read, readWrite
+dbAdmin, userAdmin, dbOwner
+clusterAdmin, clusterManager, clusterMonitor, hostManager
+backup, restore
+root
+readAnyDatabase, readWriteAnyDatabase
+dbAdminAnyDatabase, userAdminAnyDatabase
+root
+
+Lab - Create dbUser user
+```
+use admin
+db.createUser({
+  user: "m103-application-user",
+  pwd: "m103-application-pass",
+  roles : [ { db: "applicationData",
+role: "readWrite" } ]
+})
+
+Successfully added user: {
+	"user" : "m103-application-user",
+	"roles" : [
+		{
+			"db" : "applicationData",
+			"role" : "readWrite"
+		}
+	]
+}
+```
+
+Server Tools
+
+mongostat --port 27000
+mongorestore, mongodump (bson utils)
+
+mongorestore <options> dump/
+
+mongoexport/import (json-based)
+
+Lab - Import 
+$ mongoimport --host=127.0.0.1:27000 --authenticationDatabase=admin --db=applicationData --collection=products --username=m103-application-user --password=m103-application-pass /shared/products.json```
+
+2018-09-25T03:15:52.700+0000	imported 516784 documents
+```
+
