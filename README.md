@@ -98,3 +98,28 @@ security:
 storage:
   dbPath: /data/db
 ```
+
+Lab - Logging to a Different Facility
+Need to set db.setProfilingLevel( 1, { slowms: 50 } )
+
+```
+net:
+  port: 27000
+  bindIp: "192.168.103.100,localhost"
+security:
+  authorization: enabled
+storage:
+  dbPath: /data/db
+systemLog:
+  destination: file
+  path: /var/mongodb/db/mongod.log
+  logAppend: true
+processManagement:
+  fork: true
+operationProfiling:
+  mode: slowOp
+  slowOpThresholdMs: 50
+
+$ mongo localhost:27000/admin -u m103-admin -p m103-pass
+```
+
