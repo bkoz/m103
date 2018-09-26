@@ -212,9 +212,8 @@ $ mongoimport --host=127.0.0.1:27000 --authenticationDatabase=admin --db=applica
 
 ##### Config options
 
-Use openssl to create a security.keyFile: (used to auth to each other)
-chmod 400 keyfile
-replication.replSetName: set-name
+- Use openssl to create a security.keyFile: (used to auth to each other)
+- replication.replSetName: set-name
 
 Each node requires a unique:
  - dbpath
