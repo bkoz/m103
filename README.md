@@ -220,3 +220,34 @@ Each node requires a unique:
  - dbpath
  - logpath
  - port
+
+Lab - Replica Set
+
+Config file for node-1
+```
+net:
+  port: 27001
+  bindIp: "192.168.103.100,localhost"
+security:
+  authorization: enabled
+  keyFile: /var/mongodb/pki/m103-keyfile
+storage:
+  dbPath: /var/mongodb/db/1
+systemLog:
+  destination: file
+  path: /var/mongodb/db/mongod1.log
+  logAppend: true
+processManagement:
+  fork: true
+operationProfiling:
+  mode: slowOp
+  slowOpThresholdMs: 50
+replication:
+  replSetName: m103-repl
+```
+
+Add the replicas.
+```
+mongo 192.168.103.100:27001/admin -u m103-admin -p m103-pass
+MongoDB Enterprise m103-repl:PRIMARY> rs.add("192.168.103.100:27002")
+```
