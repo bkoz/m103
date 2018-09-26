@@ -208,3 +208,15 @@ $ mongoimport --host=127.0.0.1:27000 --authenticationDatabase=admin --db=applica
 2018-09-25T03:15:52.700+0000	imported 516784 documents
 ```
 
+#### Replica Sets
+
+##### Config options
+
+Use openssl to create a security.keyFile: (used to auth to each other)
+chmod 400 keyfile
+replication.replSetName: set-name
+
+Each node requires a unique:
+ - dbpath
+ - logpath
+ - port
