@@ -257,6 +257,11 @@ MongoDB Enterprise m103-repl:PRIMARY> rs.remove("192.168.103.100:27003")
 MongoDB Enterprise m103-repl:PRIMARY> rs.add("m103:27003")
 ```
 
+Lab - Writes with failovers
+```
+
+```
+
 Lab - Read concern and Read Preferences
 ```
 
