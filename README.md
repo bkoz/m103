@@ -250,3 +250,9 @@ Add the replicas.
 mongo 192.168.103.100:27001/admin -u m103-admin -p m103-pass
 MongoDB Enterprise m103-repl:PRIMARY> rs.add("192.168.103.100:27002")
 ```
+
+Lab - Remove/Add node
+```
+MongoDB Enterprise m103-repl:PRIMARY> rs.remove("192.168.103.100:27003")
+MongoDB Enterprise m103-repl:PRIMARY> rs.add("m103:27003")
+```
