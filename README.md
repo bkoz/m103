@@ -259,10 +259,14 @@ MongoDB Enterprise m103-repl:PRIMARY> rs.add("m103:27003")
 
 Lab - Writes with failovers
 ```
-
+db.new_data.insert({"m103": "very fun yes"}, { writeConcern: { w: "majority", wtimeout: 1000 }})
 ```
 
 Lab - Read concern and Read Preferences
 ```
-
+rs.slaveOk()
+db.products.find().readPref("secondaryPreferred")
 ```
+
+#### Sharding
+
