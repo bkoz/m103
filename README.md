@@ -222,7 +222,7 @@ Each node requires a unique:
 
 Lab - Replica Set
 
-Config file for node-1
+Create a config file for each node.
 ```
 net:
   port: 27001
@@ -245,9 +245,28 @@ replication:
   replSetName: m103-repl
 ```
 
-Add the replicas.
+Start each mongod.
 ```
-mongo 192.168.103.100:27001/admin -u m103-admin -p m103-pass
+$ mongod --config <nodeX.conf>
+```
+
+Connect to the first node as localhost and create an admin user with the root role in the admin database.
+```
+$ mongo --port <node1-port>
+> rs.initiate()
+> use admin
+> db.createUser{user: m103-admin, pwd: m103-pass, roles: {root}}
+```
+
+Authenticate to the primary as the admin user.
+```
+> db.auth("m103-admin", "m103-pass")
+OR
+$ mongo 192.168.103.100:27001/admin -u m103-admin -p m103-pass
+```
+
+Add the remaining replicas.
+```
 MongoDB Enterprise m103-repl:PRIMARY> rs.add("192.168.103.100:27002")
 ```
 
