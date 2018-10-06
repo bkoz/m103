@@ -255,7 +255,7 @@ Connect to the first node as localhost and create an admin user with the root ro
 $ mongo --port <node1-port>
 > rs.initiate()
 > use admin
-> db.createUser{user: m103-admin, pwd: m103-pass, roles: {root}}
+> db.createUser({ user: "m103-admin", pwd: "m103-pass", roles : [ { db: "admin", role: "root" } ] })
 ```
 
 Authenticate to the primary as the admin user.
